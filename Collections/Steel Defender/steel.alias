@@ -63,9 +63,9 @@ if not combat() or not combat().me:
 
 groupname = f'''{name[:2]}\'s Battle Smith '''
 args = argparse(&ARGS&)
-ac  = args.get('ac',default=0,type_=int) or 'ac' in SD.keys() and int(SD.ac) or 15 if lvl<15 else 17
-hp  = args.get('hp',default=0,type_=int) or 'hp' in SD.keys() and int(SD.hp) or 2+intelligenceMod+lvl*5
-thp = args.get('thp',default=0,type_=int) or int('thp' in SD.keys()) and int(SD.thp)
+ac  = args.last('ac',default=0,type_=int) or 'ac' in SD.keys() and int(SD.ac) or 15 if lvl<15 else 17
+hp  = args.last('hp',default=0,type_=int) or 'hp' in SD.keys() and int(SD.hp) or 2+intelligenceMod+lvl*5
+thp = args.last('thp',default=0,type_=int) or int('thp' in SD.keys()) and int(SD.thp)
 bonus = ch.spellbook.dc-(8+intelligenceMod+proficiencyBonus)
 atk = f'{intelligenceMod+proficiencyBonus+bonus}' 
 monStats=(1+(lvl>4)+(lvl>8)+(lvl>12)+(lvl>16))

@@ -1,0 +1,24 @@
+!alias stand embed <drac2>
+args = &ARGS&
+c = combat()
+n = '\n'
+current = c.current if c else ''
+targetList = []
+if not c:
+    err("{n}This alias needs combat!")
+
+if args and args[0] in ['help','?']:
+    err("{n}Use `!stand <target>` or `!stand -t <target>`. Can chain multiple together.")
+if len(args)>0:
+    for t in args: 
+        if t != '-t' and (tar := c.get_combatant(t)):
+            tar.remove_effect('Prone')
+            targetList.append(tar.name)
+else:
+    if current.type == 'group' and len(c.current.combatants>1):
+        optionList = [i.name for i in c.current.combatants]
+        return f""" -title "The current combatant is a group. Please target a specific one." -desc "{n.join(optionList)}" """
+    current.remove_effect('Prone')
+
+return f""" -title "{', '.join(targetList) if targetList else current.name} stood up from being Prone" -desc "Standing up takes more effort; doing so costs an amount of movement equal to half your speed. For example, if your speed is 30 feet, you must spend 15 feet of movement to stand up. You can't stand up if you don't have enough movement left or if your speed is 0." -color {color} -thumb {image if current.type != 'group' and current.creature_type == None else ''} """
+</drac2>

@@ -32,7 +32,7 @@ if "&1&".lower() == "name":
               SD['name'] = "&2&"
               new = SD.name
               ch.set_cvar(sd, dump_json(SD))
-              return f"""embed -title "{name} name's of their Wildfire Spirit!" -f "Old name|{old}" -f "New name|{new}" -thumb {SD.image}"""
+              return f"""embed -title "{name} names their Wildfire Spirit!" -f "Old name|{old}" -f "New name|{new}" -thumb {SD.image}"""
        else:
               old = SD.name
               return f"echo Your Wildfire Spirit is named {old}"

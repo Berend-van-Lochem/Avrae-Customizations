@@ -1,0 +1,101 @@
+<drac2>
+args               = &ARGS& 
+parse              = argparse(&ARGS&)
+out                = f"""embed  -color {color} -thumb https://media.discordapp.net/attachments/846062066225250365/887043638213869628/b134df5329cb20a97f303f36ddfbd771.png """
+settings           = load_json(get_svar("LibrarySettings",'{"libraries":["ac34f8ba-b7e8-4924-beae-0a104641a3bd"],"categories":["fiction","non-fiction"],"languages":["common","dwarvish","elvish","draconic","gnomish","halfling"],"genres":["science","magic","guide","bestiary","story","humanities","myth"]}'))
+overview           = True if "overview".lower() in "&*&".lower() and &ARGS& else False
+page_search        = parse.last('page',1,int)
+book_search        = parse.last('book',default='').lower()
+category_search    = parse.last('cat', default='').lower()
+genre_search       = parse.last('genre',default='').lower()
+language_search    = parse.get('lang', default='')
+language_search    = [x.lower() for x in language_search if x]
+category_list      = settings.categories
+genre_list         = settings.genres
+language_list      = settings.languages
+category_books     = []
+genre_books        = []
+language_books     = []
+finished_books     = []
+book_list          = []
+matching_book_list = []        
+n                  = '\n'
+
+if args and args[0] in "?help":
+    return f"""help {ctx.alias} -here"""
+library = []
+for gvar in settings.libraries:
+     library += load_json(get_gvar(gvar))
+
+book_term     = "All"
+genre_term    = "All"
+category_term = "All"
+language_term = "All"
+# Filter field construction
+if book_search:
+    book_term = book_search.capitalize()
+if genre_search:
+    genre_term = genre_search.title()
+if category_search:
+    category_term = category_search.title()
+if language_search:
+    language_term = ', '.join(language_search).title()
+filters = f"""-f "Filters|Title: {book_term}{n}Category: {category_term}{n}Genre: {genre_term}{n}Languages: {language_term}" """
+
+
+
+
+for book in library:
+    if not category_search or category_search not in category_list or book.G.lower() == category_search:
+        category_books.append(book)
+# filter on categories
+for book in category_books:
+    if not genre_search or genre_search not in genre_list or book.S.lower() == genre_search:
+        genre_books.append(book)
+# filter on genres            
+for book in genre_books:
+    if (not language_search) or (not any([l in language_list for l in language_search])) or (any([x in book.L.lower() for x in language_search])):
+           finished_books.append(book)
+#filter on languages
+
+
+
+if book_search:
+    matching_books = [book for book in finished_books if book_search == book.T.lower()] or [book for book in finished_books if book_search in book.T.lower()]
+    
+    if not matching_books:
+        return f"""embed {filters} -title "{name} was unable to find any books with those filters." -thumb https://media.discordapp.net/attachments/846062066225250365/887043638213869628/b134df5329cb20a97f303f36ddfbd771.png"""
+
+    if len(matching_books) > 1:
+        for book in matching_books:
+            matching_book_list.append(book.T)
+        return f"""{filters} -title "Matched multiple books. Please be more specific!" -f "Matches:" -f "{n.join(matching_book_list)[1000:]}" -footer "Books in this filter: {len(matching_book_list)} - By VeryGreatFrog#6253" -thumb https://media.discordapp.net/attachments/846062066225250365/887043638213869628/b134df5329cb20a97f303f36ddfbd771.png """
+
+    book_found = matching_books[0]
+    out += f""" {filters} -title "{name} looks for a book in the library and finds:\n**{book_found.T}**" -f "Author|{book_found.A}" -f "Category|{book_found.G}|inline" -f "Genre|{book_found.S}|inline"  """
+    out += f""" -f "Languages|{book_found.L}|inline" -f "Description|{book_found.D}" """
+    return out
+
+if overview:
+    for book in finished_books:
+        book_list.append(book.T)
+    pages = [book_list[i:i+15] for i in range(0, len(book_list), 15)]
+    if not pages:  
+        return f"""embed -title "{name} was unable to find any books with those filters." -color <color> -thumb -thumb https://media.discordapp.net/attachments/846062066225250365/887043638213869628/b134df5329cb20a97f303f36ddfbd771.png """ 
+    if len(pages) < page_search:
+        page_search = len(pages)
+    out += f"""{filters} -title "{name} checks the book catalogs!" -f "Book overview|{n.join(pages[ min(len(pages),page_search-1)] )}" -footer "Showing page {page_search} out of {len(pages)}\nBooks in this filter: {len(finished_books)} - By VeryGreatFrog#6253" """
+    return out
+    
+random        = finished_books[randint(len(finished_books))] if finished_books else None
+
+if not random: return f"""embed -title "{name} was unable to find any books with those filters." -color <color> -thumb -thumb https://media.discordapp.net/attachments/846062066225250365/887043638213869628/b134df5329cb20a97f303f36ddfbd771.png """ 
+
+if not book_search:
+    out += f""" {filters} -title "{name} looks for a book in the library and finds:\n**{random.T}**" -f "Author|{random.A}" -f "Category|{random.G}|inline" -f "Genre|{random.S}|inline"  """
+    out += f""" -f "Languages|{random.L}|inline" -f "Description|{random.D}"  -footer "Books in this filter: {len(finished_books)}" """
+
+out += f""" -footer "Books in this filter: {len(finished_books)} - By VeryGreatFrog#6253" """
+return out
+
+</drac2>

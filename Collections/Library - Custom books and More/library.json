@@ -1,0 +1,728 @@
+[{
+      "T": "Dragons and Dogma",
+      "A": "Taklak",
+      "L": "Draconic",
+      "D": "A small tome with instructions for how to properly address and rever your draconic overlord.",
+      "G": "Non-Fiction",
+      "S": "Guide"
+   },
+   {
+      "T": "100 ways to use Prestidigitation",
+      "A": "Yeybar Flickerbranch",
+      "L": "Common, Gnomish, Elvish, Draconic",
+      "D": "A book about how to use the cantrip in different unique and useful ways.",
+      "G": "Non-Fiction",
+      "S": "Magic"
+   },
+   {
+      "T": "Divination: A Dissertation",
+      "A": "Elizabeth Fortune",
+      "L": "Common, Elvish",
+      "D": "An overview of the divination school of magic, it's limits and perks, and a deep dive into the Divination spell.",
+      "G": "Non-Fiction",
+      "S": "Magic"
+   },
+   {
+      "T": "The shield spell, why does it work so well?",
+      "A": "General Matick",
+      "L": "Common, Elvish",
+      "D": "How the simplicity of the Shield spell makes it function so well.",
+      "G": "Non-Fiction",
+      "S": "Magic"
+   },
+   {
+      "T": "Necromancy - Evil at its core",
+      "A": "Unknown",
+      "L": "Elvish",
+      "D": "A dusty tome written in Elvish from ages ago, hard to read because much of the words have gone out of use today. It describes with much fury why necromancy is so despicable, even going as far as condemning ressurection magic all the same.",
+      "G": "Non-Fiction",
+      "S": "Magic"
+   },
+   {
+      "T": "How do spells raise people from death?",
+      "A": "Grenpine Negglemeggle",
+      "L": "Common, Elvish",
+      "D": "This thick book goes into detail that when a person is killed, the soul lingers in the body, but it dissipates over time. The more powerful the spell, the less renmants of the soul is needed to restore the full soul into the body before it has passed to the afterlife.",
+      "G": "Non-Fiction",
+      "S": "Magic"
+   },
+   {
+      "T": "Evocation spells: A guide for dummies",
+      "A": "Jozod Jithuk",
+      "L": "Common, Dwarvish, Draconic",
+      "D": "A short synopsis of how evocation spells harness elemental energy and mold it into powerful attack spells",
+      "G": "Non-Fiction",
+      "S": "Magic"
+   },
+   {
+      "T": "Minor Illusion: The cantrip for an aspiring hag",
+      "A": "Freya",
+      "L": "Elvish",
+      "D": "A small booklet describing how to trick people with Minor Illusion, complete with cute illustrations.",
+      "G": "Non-Fiction",
+      "S": "Magic"
+   },
+   {
+      "T": "Alchemical Reagents: Tasty or Toxic",
+      "A": "Bombastus Leafgrinder",
+      "L": "Common, Dwarvish",
+      "D": "A primer detailing common ingredients used in alchemical concoctions and the effects they can have. It also contains thorough advice for steps that should be taken when dealing with poisonous ingredients.",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "Erefael’s Complete Guide to Enchantment Magic (and its effects on various humanoids)",
+      "A": "Erefael",
+      "L": "Elvish, Draconic",
+      "D": "A compilation of spells and experiments on the applications of enchantment magic. The date on the inner cover reveals that the book is very much out of date.",
+      "G": "Non-Fiction",
+      "S": "Magic"
+   },
+   {
+      "T": "A Rounded Diet",
+      "A": "Lindel Goodbarrel",
+      "L": "Common, Halfling",
+      "D": "A cookbook for all the meals of the day. Interestingly, it has recipes for seven different meals, rather than three.",
+      "G": "Non-Fiction",
+      "S": "Guide"
+   },
+   {
+      "T": "Plays of the Wyvern-Troupe",
+      "A": "Eugene Llewellyn",
+      "L": "Common, Elvish",
+      "D": "An outdated guide detailing the plays performed by the Wyvern-Troupe, a now disbanded theater group.",
+      "G": "Non-Fiction",
+      "S": "Humanities"
+   },
+   {
+      "T": "Necromancy - Commonly Misunderstood",
+      "A": "Unknown",
+      "L": "Common, Elvish",
+      "D": "A book pleading the case for necromancy, claiming it is a tool like any other and that the hate against it is nothing but prejudice. The pages show a distinct lack of wear.",
+      "G": "Non-Fiction",
+      "S": "Magic"
+   },
+   {
+      "T": "Pride or Tribe",
+      "A": "Thokk the Brutal",
+      "L": "Common",
+      "D": "A romance novel telling the story of Krusk and Volen. The plot consist of nearly nothing but cheesy clichés, but the pages of this book still shows the wear of many readings.",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "The Scion, the witch and the warforged",
+      "A": "C. S. Lewis",
+      "L": "Common",
+      "D": "A popular childrens story of three unlikely adventurers and their quest to save the realm.",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "The Hellhound of Baskerville",
+      "A": "A. C. Coyle",
+      "L": "Common",
+      "D": "A rivetting mystery unraveled by the great Sherlock Gnomes.",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "13 Habits of Highly Effective Wizards",
+      "A": "Dr. Surefoot",
+      "L": "Elvish, Common",
+      "D": "A highly rated self help book for the aspiring wizard.",
+      "G": "Non-Fiction",
+      "S": "Guide"
+   },
+   {
+      "T": "Killing Mimics",
+      "A": "Gerald D. Wenith",
+      "L": "Common",
+      "D": "Simple tips and tricks to clearing out your nearest dungeon.",
+      "G": "Non-Fiction",
+      "S": "Guide"
+   },
+   {
+      "T": "The Origin of the Planes",
+      "A": "Ayon Yiel",
+      "L": "Elvish, Common",
+      "D": "A collection of the common myths of creation.",
+      "G": "Non-Fiction",
+      "S": "Myth"
+   },
+   {
+      "T": "Fantastic Fey and where to find them.",
+      "A": "Alex Wellin",
+      "L": "Elvish, Common",
+      "D": "A comprehensive guide to the sentient races of the Feywild. ",
+      "G": "Non-Fiction",
+      "S": "Guide"
+   },
+   {
+      "T": "Bard’s guide to Comedy: Making the crowd song without a single note.",
+      "A": "Adriel the Joke",
+      "L": "Common",
+      "D": "A collection of jokes, puns and humorous poetry.",
+      "G": "Non-Fiction",
+      "S": "Humanities"
+   },
+   {
+      "T": "The thought of Emotion",
+      "A": "Professor Clawfoot",
+      "L": "Draconic, Common",
+      "D": "A final collection of thoughts on Emotion, translated from the journal of a Lizardfolk Scholar.",
+      "G": "Non-Fiction",
+      "S": "Humanities"
+   },
+   {
+      "T": "The Realm Mapped",
+      "A": "Avid Lien",
+      "L": "Common",
+      "D": "A horribly inaccurate, old set of maps, showing the continent as a circular uniform mass lacking any defining features",
+      "G": "Fiction",
+      "S": "Science"
+   },
+
+   {
+      "T": "Since the Dawn of Man",
+      "A": "Noah Teague",
+      "L": "Common, Elvish",
+      "D": "This is Noah's most famous compilation of anthropological findings and commentary on the evolution of society. It focuses on the early development of tools and argues that opposable thumbs was by far the most important adaptation for man.",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "In the Light of Dawn",
+      "A": "Arthur Teague",
+      "L": "Common, Elvish",
+      "D": "A commentary and rebuttal to his brother, Noah Teague's famous work 'Since the Dawn of Man'. It's full of petty jabs, and counters with the idea that standing upright was the most important adaptation for man, as it allowed them the luxury of holding things.",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "The Brothers Teague: a Tragedy",
+      "A": "Unknown",
+      "L": "Common, Elvish",
+      "D": "A recount of the most bloody fight in anthropological history. Fists were thrown, and feelings were hurt. An absolute disgrace within the community.",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "I'm Lichen It!",
+      "A": "Abraham Crogan",
+      "L": "Common, Halfling",
+      "D": "Everything anyone would ever need to know about lovable lichens, and more!",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "All of My Friends Are Dead",
+      "A": "Worth Beley",
+      "L": "Common",
+      "D": "The tale of an elf who grew up in a community of humans. Full of dark humor, yet surprisingly charming.",
+      "G": "Non-Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "Cell Theory: We're All Just Trillions of Tiny Animals Working Together!",
+      "A": "Aiden O'Mally",
+      "L": "Common, Dwarvish",
+      "D": "Some crackpot theory on what people are made of. Just a bunch of nonsense really, everyone knows people are actually just made of meat and bones.",
+      "G": "Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "What a Girl Wants",
+      "A": "H. Johnson",
+      "L": "Common Dwarvish, Gnomish, Halfling",
+      "D": "Harry believed he discovered just what a girl wants, and he shared it with the world! It's full of dating tips and tricks for the common man or woman interested in finding that special woman for them. Some might find this laughable, as much of it is very dated since it was written over 300 years ago.",
+      "G": "Non-Fiction",
+      "S": "Humanities"
+   },
+   {
+      "T": "What a Girl Really Wants",
+      "A": "H. Johnson",
+      "L": "Common, Dwarvish, Gnomish, Halfing",
+      "D": "Henreietta corrected a lot of her husband's mistakes in this profound, much more accurate account of what she specifically wants and shames him for generalizing all women as wanting the same thing.",
+      "G": "Non-Fiction",
+      "S": "Humanities"
+   },
+   {
+      "T": "The Happy Tree",
+      "A": "Faye Walker",
+      "L": "Common, Elvish, Gnomish, Halfling",
+      "D": "A wholesome book written for youth and those who are lost in hopes of guiding them toward a fulfilling and happy life. It's a cute little story about two friends who meet by a tree at different periods in their life.",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "Escaping Murder",
+      "A": "Rousset Biltram",
+      "L": "Common, Halfling",
+      "D": "A riveting story about a small farm girl and accidental murder, who now has to hide the truth away. The short blurb reads: 'I didn’t mean to kill her. Now my life has turned upside down. Nothing feels right anymore, and the authorities are only asking more and more questions.....",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "To the ends of the world.",
+      "A": "Leandogeus ",
+      "L": "Common, Elvish",
+      "D": "A bestselling story about an elf and their two friends, who are the only survivors of a soul-destroying plague. How will they survive these now infected chasing them at every step, and regain their footing in the world?",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "Dangerous Dishes",
+      "A": "Dongor Seyram",
+      "L": "Common, Dwarvish",
+      "D": "A slightly sticky cookbook with recipes for dishes containing unusual and rare ingredients. It touches on some of the dangers usually involved with acquiring the ingredients, though it gives no advice on how to circumvent them.",
+      "G": "Non-Fiction",
+      "S": "Guide"
+   },
+   {
+      "T": "The Void in the Sky",
+      "A": "Jory Calacrook",
+      "L": "Common",
+      "D": "A story about a creature of the void passing by beyond the stars which caused a horrific, eldritch invasion of Nelsa Themar in which alien entities brainwashed the masses into offering themselves for consumption. Mysteriously enough, it includes many people who currently live within Nelsa Themar. Obviously it's fiction, how could everyone forget such a thing happenening as this storybook suggests?",
+      "G": "Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "The Frog and the Filbert",
+      "A": "Sir Roberto Ringshield",
+      "L": "Common, Dwarvish",
+      "D": "A children's story about a frog that just wants some sleep, but even with dozens of lily pads, that darn filbert keeps him awake",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "Mechanics of Metals",
+      "A": "G.H. Gilbert",
+      "L": "Common, Elvish, Dwarvish, Draconic",
+      "D": "A tome discussing how to determine the stresses on materials and using those processes to decide what material to use and how thick it should be to endure those stresses. Special focus on the design of armor.",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "One Fox, Two Fox, Green Fox, Red Fox",
+      "A": "Doctor Lhute",
+      "L": "Common",
+      "D": "A story book for children about how to describe two different things with a similar name",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "The Spirit of the Forest",
+      "A": "Peigín Nic Canáin",
+      "L": "Common, Elvish, Halfling",
+      "D": "A book written by a druid aimed toward the common folk in hopes of spreading an appreciation for the forest. It goes over the basic natural cycles within the forest such as the water cycle and the food chain and explains why it's important to preserve it as it is.",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "The Happy Tree",
+      "A": "Faye Walker",
+      "L": "Common, Elvish, Gnomish, Halfling",
+      "D": "A wholesome book written for youth and those who are lost in hopes of guiding them toward a fulfilling and happy life. It's a cute little story about two friends who meet by a tree at different periods in their life.",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "An Elvish Princess",
+      "A": "Gerdur Copperforged",
+      "L": "Dwarvish",
+      "D": "A worst-selling book about a young elvish princess, brave, beautiful, strong, and is an Admired for their skill at making the best battleaxes! They go on an adventure where they find great success against the massive Orcs!",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "How to do your dishes. A guide for everyone.",
+      "A": "Yotina Selrilsi",
+      "L": "Common, Elvish, Gnomish, Halfling, Dwarvish, Draconic",
+      "D": "A complete and comprehensive guide on how to do your dishes for everyone, by world renowned educator, Yotina Selrilsi! It's finally out for everyone to see after many years of development, writing, and translations, to find the best way to do this!",
+      "G": "Non-Fiction",
+      "S": "Guide"
+   },
+   {
+      "T": "The Wayward Wave at the End of the World",
+      "A": "Bors Tigé",
+      "L": "Common, Halfling, Dwarvish",
+      "D": "This story tells the tale of Tuco Perez and his ship the Wayward Wave. With his trusty crew at his side Perez sails in search of long lost gold, and the limits of the world.",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "1001 Alchemical Ingredients and Where to Find Them",
+      "A": "Petrov Haymitch",
+      "L": "Common",
+      "D": "This book thoroughly lists different alchemical ingredients and their effects from the mundane to the marvelous. Despite what the title claims, there is only 965 numbered ingredients in the book.",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "A suggestion to extend the duration of spells via the use of natural systems.",
+      "A": "Olomis Rene",
+      "L": "Common, Draconic, Dwarvish",
+      "D": "A dissertation suggesting the use of waterwheels to power magical spells, taking a system used usually to turn millstones and using it to sustain long-lasting effects. Purely academic, this concept has seemingly yet to be put into practice.",
+      "G": "Non-Fiction",
+      "S": "Magic"
+   },
+   {
+      "T": "The Seething, Sleeping Queen.",
+      "A": "Unknown",
+      "L": "Common, Halfling",
+      "D": "A new take on a classic children’s fable, ‘Lost love of the Sleeping Queen.’ The story follows a hero who discovered a ruined castle, and inside the titular Sleeping Queen. The hero finds her wandering the ruins, still stuck in her slumber.",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "Seeds, Stone, Sorrow.",
+      "A": "Unknown",
+      "L": "Common, Dwarvish, Elvish, Halfling",
+      "D": "The Seeds Sown by the kind king Tratoorin have slowly sprouted a magnificent tree as the city grew, once heralded as its centerpiece, the tree now withers and the ground begins to shake.",
+      "G": "Fiction",
+      "S": "Myth"
+   },
+   {
+      "T": "The first, the final.",
+      "A": "Octavius Mett",
+      "L": "Dwarvish",
+      "D": "A story filled with half-truths about a cursed family. The firstborn of any generation was to be an envoy of the gods, used to do their bidding on the material plane. Such a boon does not come without its downsides, though.",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "A brief history of the Boor’s Fortune.",
+      "A": "Kiwath",
+      "L": "Common",
+      "D": "A rather lengthy selection, as the title suggests this book covers the treasure hunting organization known simply as the Boor’s Fortune. It covers its formation, locations, and goals while also exploring expeditions undertaken by its members.",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "Elvish Viruses Dwarvish Architecture.",
+      "A": "Brofoick Steelbranch",
+      "L": "Common, Elvish, Dwarvish",
+      "D": "This book seems to go into great detail about the buildings of two specific populations of elves and dwarves, comparing their construction and composition. The author notably seems to have a distaste for much of the Elvish Architecture he writes about.",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "Finding Peace in Infinite Death",
+      "A": "Author",
+      "L": "Common, Draconic",
+      "D": "This work puts forward the idea that when someone dies they repeat the last few moments of their life endlessly rather than transferring to the afterlife. It also suggests ways to come to terms with your fate. Widely discredited after men returned from the grave experienced things to the contrary.",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "Journal of a goblin",
+      "A": "Boblin",
+      "L": "Common",
+      "D": "A translated hand written journal of a goblin in his tribe, it recounts his daily activities up until his camp was raided by adventurers.",
+      "G": "Non-fiction",
+      "S": "story"
+   },
+   {
+      "T": "The secret to the perfect cup of tea",
+      "A": "Ashton Marshall",
+      "L": "Common, Halfling",
+      "D": "This 300 page tome appears to be centuries old, some pages falling apart and the ink coming of. The book leads with the atanomy of a tea leaf, followed by a long part how it gives the flavour to the hot water, and concludes with the fact that a splash of milk can really bring out the flavour doubly so of the tea.",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "Beware the Sky god.",
+      "A": "Robert Traylor",
+      "L": "Common",
+      "D": "A small group of human settlers begin to catch glimpses of small orbs of light floating in the sky. One day the group manages to get close enough to interact with one, which claims to be their god. Misfortune starts to befall the tribe as it slowly falls apart.",
+      "G": "Fiction",
+      "S": "History"
+   },
+   {
+      "T": "The tales of treachery!",
+      "A": "Nicodemo Glitsk",
+      "L": "Common, Elvish, Gnomish, Draconic",
+      "D": "This book written by a Half-Elf is a story of political intrigue, about a fictional kingdoms who war over control of the plane. It details a shifting political climate, assassination, convert operations, spying, and others. Full of stories of their wars and skirmishes, one of the main kings in the story is attempting to quell rebellion all over his kingdom as his rule is falling apart, and assassins are at every corner. ",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "The stories of a speaking sword!",
+      "A": "Oridon Gamwich",
+      "L": "Common, Gnomish, Halfling",
+      "D": "This fictional story written by a halfling, is about comedy about a halfling and their magical talking sword which has the ability to fly around and give witty remarks! It is has loose fantasy story structure, though it is mostly filled with humor and jokes.",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "Brewing Basics",
+      "A": "Jalynfein Waeglossz",
+      "L": "Common, Halfling, Draconic, Dwarvish",
+      "D": "A book that describes the basic fundamentals of brewing. It is designed for beginners, and thus does not provide any complicated information.",
+      "G": "Non-Fiction",
+      "S": "Guide "
+   },
+   {
+      "T": "Succubitch Saga",
+      "A": "Vadania Dorniarann",
+      "L": "Common, Elvish",
+      "D": "The tale of the trials and tribulations of one group of heroes who met, fought, and finally defeated a determined succubus.",
+      "G": "Non-Fiction",
+      "S": "Myth"
+   },
+   {
+      "T": "The White Rose",
+      "A": "Esiyae Iarydirk",
+      "L": "Common, Elvish, Gnomish",
+      "D": "A gripping Romance novel about a woman elf and a her male lover, whose first act of love to her was giving his signature white rose. What will they do when the forces of the world try to separate them? The story has romance, it has drama, and it has tension which leads up to an insane and climax! *this story include multiple references to affection. Not for readers under 20 elf years of age*",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "Hounds of Darkness",
+      "A": "Unknown",
+      "L": "Common, Draconic",
+      "D": "Shadow Mastiffs are shadowy hounds from the Shadowfell. They stalk their prey in packs and can meld into the shadows around them, making them invisible to the naked eye. Their pack leaders' icy howls can send shivers down the spine of the bravest warrior, and they'll hunt men and beasts alike. They gain supernatural protection from darkness around them, but they have a grave distaste for sunlight.",
+      "G": "Non-Fiction",
+      "S": "Bestiary"
+   },
+   {
+      "T": "Old Folklore - The Swampy Snatchers",
+      "A": "Hordal Dofflingos",
+      "L": "Common, Gnomish, Halfling, Elvish",
+      "D": "A book written by a halfling which recounts a myth in local folklore passed down from generation to generation for over 500 years. It talk about a particular swamp where children, merchants, and others wandering through the area mysterously disappear, never to be seen again. The culprit was said to be some sentient trees.",
+      "G": "Fiction",
+      "S": "Myth"
+   },
+   {
+      "T": "What ARE Humans, Anyway?",
+      "A": "Tala Zedletodle",
+      "L": "Gnomish, Halfling, Elvish",
+      "D": "Written by a gnome from a little over a century ago, this book attempts to explain how humans fit into the grand scheme of things, seeing as they are about as common as goblinoids in this world. The book is intentionally not written in the common tongue so most humans aren't able to read it as easily.",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "101 Puns that will 'egg' you on and 'crack' everyone up!",
+      "A": "Silri Stanzedya",
+      "L": "Common",
+      "D": "'Egg'streme puns that are 'egg'xactly what you're looking for, if what you're looking for is some cheesy puns that will 'whisk' you away. Careful though, as after hearing then people might get a but 'runny' or you might 'scramble' their minds! not all 'yolks' will appreciate them.",
+      "G": "Non-Fiction",
+      "S": "Humanities"
+   },
+   {
+      "T": "The Great Journey Beyond: A Warning To The Curious",
+      "A": "Thiliedir Maidhben",
+      "L": "Common",
+      "D": "It tells the tale of the author's friend, an ambitious and curious wizard named Ofyne Baranet, whose insatiable obsession with the study of Aberrations eventually lead to her demise as she was transformed into one herself. The text ends with a warning from the author.",
+      "G": "Non-Fiction",
+      "S": "Magic"
+   },
+   {
+      "T": "Gork Goes Bonk",
+      "A": "Gork Jr.",
+      "L": "Common",
+      "D": "A violent Orcish children's book about a homicidal Orc and his quest for blood. Not a bestseller",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "Beautiful Baking",
+      "A": "John Bakin’",
+      "L": "Common",
+      "D": "The best recipes from across the realm, including Dragon Cake, and plum pie.",
+      "G": "Non-Fiction",
+      "S": "Guide"
+   }, {
+      "T": "Spellasting for the Curious",
+      "A": "Aria Rondo",
+      "L": "Common, Elvish",
+      "D": "An in depth explanation of spellcasting for those who wish to know. It goes deeply into the workings of the Weave.",
+      "G": "Non-Fiction",
+      "S": "Magic"
+   }, {
+      "T": "Sorcerer's Vow",
+      "A": "Angela Brace",
+      "L": "Common",
+      "D": "A story book about a sorcerer's life, living with their parents, and the situations that arrive. A comedy, family, slice of life book that shows that whatever the case, you have you're family's support in your life. ",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "On Caritative Care",
+      "A": "Imelda",
+      "L": "Common, Halfling",
+      "D": "A thick hardback cover book, outlining how care is supposed to be rooted in love, charity and respect for the patient's dignity. It goes over some common ways to support your patient, and exercises to help keeping them active.",
+      "G": "Non-Fiction",
+      "S": "Humanities"
+   },
+   {
+      "T": "Augustus' Diary",
+      "A": "Augustus Tsuri",
+      "L": "Common, Elvish",
+      "D": "A relatively worn out book that is the autobiography of the Grandmaster Hunter Augustus. It details some of his life and his battles against demonic cultists and Fiends themselves. A diary outlining the enemy's tactics and how one can counter them or even outright render their enemy useless. However, it clearly shows its age and the book was unreliable at best.",
+      "G": "Non-Fiction",
+      "S": "Bestiary"
+   },
+   {
+      "T": "The Clown King",
+      "A": "Rocko",
+      "L": "Common",
+      "D": "A thick book, telling the story of a jester's rise to kingship. A story of action, adventure, comedy and romance. A narrative that shows that even the lowest of people have the capacity to rise above and achieve greatness! ",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "On the Origin of Specie",
+      "A": "Era Durn",
+      "L": "Common",
+      "D": "A lengthy work outlining the history and different forms of modern currency. It also answers the question: why use Electrum?",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "Tales of the Ghost Fleet",
+      "A": "Annabelle Helios",
+      "L": "Common, Draconic, Elvish",
+      "D": "Written by a noblewoman from a far away land, this book describes a fleet that allegedly appeared out of thin air in the middle of a war, helping a group of rebels achieve independence from their mother country. No evidence has been found to support this claim.",
+      "G": "Fiction",
+      "S": "Myth"
+   },
+   {
+      "T": "Breakers",
+      "A": "Drack",
+      "L": "Common",
+      "D": "A medium format novel about a boy, raised by an unlikely bunch. A lich, ghost and an angel. With this upbringing making the boy more aware of the world, that not everything is so black and white. The story tells the lesson of greed in one's life, how envy is destructive and that we must become a beacon of light to others, so they can become their own beacons. ",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "Psionics, a guide to practical application.",
+      "A": "Fenian Valmys",
+      "L": "Common, Elvish",
+      "D": "An indepth guide on the fundamentals of the psionic discipline. It also covers common uses of the field as well as places where it might be mistaken for magic, and vice versa.",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "Turgenhat's Treatise on the Goblinoid Shamanic Traditions",
+      "A": "Persevus P. Turgenhat IV",
+      "L": "Common, Elvish,",
+      "D": "A treatise on the nature, history, usage and cultural importance of shamanic magic within Goblin culture. There is some debate as to whether this should be classified as magic, history or philosophy. Some scholars have cast doubt on the author's credibility and have suggested it should be classified as pure fiction.",
+      "G": "Non-Fiction",
+      "S": "Magic"
+   },
+   {
+      "T": "The Mysterious Magnerbérg.",
+      "A": "Nealyn Dale",
+      "L": "Common, Gnomish, Dwarvish",
+      "D": "A book detailing the mysteries of a strange small town and their spooky and unknown nature, children disappearing, the most hardened of leaders being driven to madness..... There are no sources, making it hard to tell whether this is fictional.",
+      "G": "Fiction",
+      "S": "Myth"
+   },
+   {
+      "T": "Breaking the Mold",
+      "A": "Luge Becker",
+      "L": "Common, Draconic",
+      "D": "An old book about the precise art of blacksmithing. The book mostly features, materials and how they interact with each other and example recipes of steel and other metal compounds. ",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "Upon the Ethereal",
+      "A": "Talasor Throdaoin",
+      "L": "Common, Elvish, Draconic",
+      "D": "A dusty tome detailing the innder workings of Clingyness, what's also known as The Ethereal Plane. It goes into excessive details on how Clingyness is constanly around everything on the material plane, permanently engulfing all of it.",
+      "G": "Non-Fiction",
+      "S": "Myth"
+   },
+   {
+      "T": "The History of Bio Transient Luminescence in Thaumographic Resonance Circles",
+      "A": "Ulfrine Llinfaell",
+      "L": "Elvish, Sylvan",
+      "D": "A fascinating journey through the occurences of Bio Transient Luminescence in Thaumographic Resonance Circles with a detailed overview of the main theories relating to the phenomenon",
+      "G": "Non-Fiction",
+      "S": "Magic"
+   },
+   {
+      "T": "Caseum Comprehensio ",
+      "A": "Mitt Hoff",
+      "L": "Common, Halfling",
+      "D": "A book on everything cheese. Lists of cheese, where they're made, how're they're made and how to best enjoy the cheese. This book also entails, places where good cheeses are made. ",
+      "G": "Non-Fiction ",
+      "S": "Guide"
+   },
+   {
+      "T": "Mimic Book of Mimics",
+      "A": "Lethian A. Morgan",
+      "L": "Common",
+      "D": "A brown leather book describing the behaviors, and habitats of Mimics. Occasinally bites if handled roughly.",
+      "G": "Non-Fiction",
+      "S": "Bestiary"
+   },
+   {
+      "T": "Mushrooms: Why They Aren't Your Friends",
+      "A": "John R Wildborrow",
+      "L": "Common",
+      "D": "A natural encyclopedia of temperate-region mushrooms, outlining the uncanny resemblances between yummy and deadly ones.",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "Terrifying Aberrations and Where to Find Them",
+      "A": "Kepler Griffus",
+      "L": "Draconic",
+      "D": "An extensive and suspiciously detailed guide on aberrations - especially lesser beholderkin -, and how to summon, control and care for them. Plenty of fun friends like: Death Kiss, Spectator, Eye of Flame, Gazer, Gauth - and many more! As the saying goes: Beauty lies in the eye of the Beholder!",
+      "G": "Non-Fiction",
+      "S": "Bestiary"
+   },
+   {
+      "T": "The Age of Sail.",
+      "A": "Drach F. Bergs",
+      "L": "Common",
+      "D": "A lengthy work that goes into detail on the origins and history of sailing vessels, using credible sources wherever possible. Complete with detailed sketches, the book only seems to be a few decades out of date.",
+      "G": "Science",
+      "S": "Non-Fiction"
+   },
+   {
+      "T": "The Hand of Autumn.",
+      "A": "Oszin Thistlecobble",
+      "L": "Common, Elvish, Halfling",
+      "D": "A lengthly collection of poems, most surrounding the personification of Autumn and other seasons.",
+      "G": "Fiction",
+      "S": "Humanities"
+   },
+   {
+      "T": "Liche's Fate Demystified",
+      "A": "Ulgag Gravelhorn",
+      "L": "Common",
+      "D": "A collection of stories and sightings surrounding the legendary ship Liche's Fate. The author uses this information to dismiss the ships existance, while pointing to a real ship as the source, the Liche's Rose",
+      "G": "Non-Fiction",
+      "S": "Science"
+   },
+   {
+      "T": "Clouds",
+      "A": "Oszin Thislecobble",
+      "L": "Common, Halfling",
+      "D": "A short collection of poems. Each poem in the set signifies a different form of love, and the poet compares each to a cloud as it drifts and shifts through the sky.",
+      "G": "Fiction",
+      "S": "Humanities"
+   },
+   {
+      "T": "Cuts and Coins",
+      "A": "Porky Noth",
+      "L": "Common",
+      "D": "An action filled novel detailing the adventures of the scoundrel Finch Cowl, a dashing outlaw fighting against corrupt nobility. Featuring many epic duels and daring escapes, the novel shows Finch as a hero for the common people.",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "Lost and Found, a Feywild Adventure",
+      "A": "Roylan Probably",
+      "L": "Common",
+      "D": "The strange tale of a dwarf who enters the Feywilds with his family to find his missing father. He lost his memory but found so much more. Written as autobiographical but for that to be possible, would take some very strange twists of time indeed, so it must be fiction. Right?",
+      "G": "Fiction",
+      "S": "Humanities"
+   }
+]

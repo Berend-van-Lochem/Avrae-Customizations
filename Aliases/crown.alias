@@ -1,0 +1,22 @@
+!alias crown embed <drac2>
+cc = "Crown of Stars"
+base = f""" -title '{name} sets some counters for Crown of Stars!' """
+ch = character() 
+if "&1&".lower() == "end" or "&1&".lower() == "drop": 
+    ch.delete_cc(cc)
+    return f"-title 'Deleted the counter for Crown of Stars.' "
+if ch.cc_exists(cc):
+    return f"-title 'You already have a counter for Crown of Stars.' "
+if "&1&".lower() == "9":
+    ch.create_cc(cc, "0","11","none", "bubble")
+    base += f''' -f "{cc}|{ch.cc_str(cc)}" '''
+elif "&1&".lower() == "8":
+    ch.create_cc(cc, "0","9","none", "bubble")
+    base += f''' -f "{cc}|{ch.cc_str(cc)}" '''
+else:
+    ch.create_cc(cc, "0","7","none", "bubble")
+    base += f''' -f "{cc}|{ch.cc_str(cc)}" '''
+return base
+</drac2> 
+-color <color>
+-thumb <image>

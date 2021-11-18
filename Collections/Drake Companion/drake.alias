@@ -1,0 +1,100 @@
+<drac2>
+ch=character()
+args = [x.lower() for x in &ARGS&]
+
+sd='DrakeCompanion'
+lvl = ch.levels.get('Ranger',0)
+sclass=load_json(get("subclass",{})).get("RangerLevel","")
+ch.set_cvar_nx(sd, '{"name": "Drake Companion", "image": "https://media.discordapp.net/attachments/817724255432081418/905890405743210558/pact-drake.png","type": "fire"}')
+SD = load_json(get(sd))
+
+if "&1&".lower() in "help?":
+       return f"""embed 
+       -title "{name} needs help with their Drake Companion!"   
+       -desc "This alias is for the Drake Companion  from the Drakewarden subclass."
+-f "Adding to Combat|`{ctx.prefix}{ctx.alias} join|add [type]` Adds the Drake Companion to combat. Type determines the damage type of its Draconic Essense ability. This can be acid, cold, fire, lighting or poison. If you do not give a type, it uses the same as you did last time. Default is fire."
+       -f "Drake Companion Name|`{ctx.prefix}{ctx.alias} name [\"name\"]` - Sets the name of the Drake Companion. Displays the name if no new name is given."
+       -f "Drake Companion Image|`{ctx.prefix}{ctx.alias} image [url]` - Sets the image of the Drake Companion. Displays the image if no new url is given."
+       -f "Bestiary|You need to have this bestiary as your active bestiary for this alias to work. This can also be made a server bestiary. 
+       `!bestiary import https://critterdb.com/#/publishedbestiary/view/6184297aaf3aa903ed25735d`" 
+       -f "Help|`{ctx.prefix}{ctx.alias} help|?` - Displays the help." 
+       -color {color} -thumb {image} 
+       """
+if not lvl: 
+       return f"echo You are not a Ranger."
+if lvl < 3:
+       return f"echo You are not a level 3 Ranger yet."
+if sclass != "Drakewarden":
+       return """echo You are not a Drakewarden. You can set this with the `!level` alias, or manually by doing `!cvar subclass {"RangerLevel": "Drakewarden"}` (copy paste, do not change anything)"""
+if "&1&".lower() == "name":
+       if len(args)==2:
+              old = SD.name
+              SD['name'] = "&2&"
+              new = SD.name
+              ch.set_cvar(sd, dump_json(SD))
+              return f"""embed -title "{name} name's of their Drake Companion!" -f "Old name|{old}" -f "New name|{new}" -thumb {SD.image}"""
+       else:
+              old = SD.name
+              return f"echo Your Drake Companion is named {old}"
+
+if "&1&".lower() == "image":
+       if len(args)==2:
+              old = SD.image
+              SD['image'] = "&2&"
+              ch.set_cvar(sd, dump_json(SD))
+              return f'embed -title "{name} sets the image of their Drake Companion!" -image {SD.image} -f "Old Image|{old}"'
+       else:
+              return f"""embed -title "Your Drake Companion's Image" -image {SD.image} -f "Image Link|{SD.image}" """
+if not combat() or not combat().me:
+       return f"echo Your character is not in Initiative. This alias does not function without it."
+
+if len(args)>1:
+	if args[1] == 'fire': 
+		SD['type'] = 'fire'
+	elif args[1] == 'acid': 
+		SD['type'] = 'acid'
+	elif args[1] == 'cold': 
+		SD['type'] = 'cold'
+	elif args[1] == 'lightning':
+		SD['type'] = 'lightning'
+	elif args[1] == 'poison':
+		SD['type'] = 'poison'
+
+groupname = f'''{name[:2]}\'s Ranger '''
+ac  = 14+proficiencyBonus
+hp  = 5+lvl*5
+atk = f'{3+proficiencyBonus}'
+dmg = f'1d6+{proficiencyBonus}[piercing]'
+dtype = SD.type
+
+if level > 14:
+	dmg = f'1d6+{proficiencyBonus}[piercing]+2d6[{dtype}]'
+elif level > 6:
+	dmg = f'1d6+{proficiencyBonus}[piercing]+1d6[{dtype}]'
+magic = 'magical' if lvl>6 else ''              
+attack = f"{atk}|{dmg}|{SD.name} attacks with a Bite!"
+monStats=(1+(lvl>4)+(lvl>8)+(lvl>12)+(lvl>16))
+monster=["Drake Companion P6", "Drake Companion P5", "Drake Companion P4", "Drake Companion P3", "Drake Companion P2"][-monStats]
+
+
+
+
+if "&1&".lower() in "addjoin":
+       out = f"""multiline
+{ctx.prefix}init opt "{name}" -group "{groupname}" 
+{ctx.prefix}init madd "{monster}" -hp {hp} -ac {ac} -name "{SD.name}" -group "{groupname}" -h -immune {dtype}
+{ctx.prefix}init effect "{SD.name}" "Bite" -attack "{attack}" {magic} """
+       return out
+
+return f"""embed 
+-title "{name} did not give a subcommand!"   
+-desc "This alias is for the Drake Companion from the Battle Smith subclass."
+-f "Adding to Combat|`{ctx.prefix}{ctx.alias} join|add [type]` Adds the Drake Companion to combat. Type determines the damage type of its Draconic Essense ability. This can be acid, cold, fire, lighting or poison. If you do not give a type, it uses the same as you did last time. Default is fire."
+-f "Drake Companion Name|`{ctx.prefix}{ctx.alias} name [\"name\"]` - Sets the name of the Drake Companion. Displays the name if no new name is given."
+-f "Drake Companion Image|`{ctx.prefix}{ctx.alias} image [url]` - Sets the image of the Drake Companion. Displays the image if no new url is given."
+-f "Bestiary|You need to have this bestiary as your active bestiary for this alias to work. This can also be made a server bestiary. 
+`!bestiary import https://critterdb.com/#/publishedbestiary/view/6184297aaf3aa903ed25735d`" 
+-f "Help|`{ctx.prefix}{ctx.alias} help|?` - Displays the help." 
+-color {color} -thumb {image} 
+"""
+</drac2> 

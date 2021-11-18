@@ -1,0 +1,83 @@
+<drac2>
+ch=character()
+args = &ARGS&
+sd='WildfireSpirit'
+lvl = ch.levels.get('Druid',0)
+sclass=load_json(get("subclass",{})).get("DruidLevel","")
+ch.set_cvar_nx(sd, '{"name": "Wildfire Spirit", "image": "https://media.discordapp.net/attachments/817724255432081418/905957736196481055/lex-witt-lyns-wildfire-spirit.png"}')
+SD = load_json(get(sd))
+
+if "&1&".lower() in "help?":
+       return f"""embed 
+-title "{name} did not give a subcommand!"   
+-desc "This alias is for the Wildfire Spirit from the Wildfire subclass."
+-f "Adding to Combat|`{ctx.prefix}{ctx.alias} join|add` Adds the Wildfire Spirit to combat."
+-f "Wildfire Spirit Name|`{ctx.prefix}{ctx.alias} name [\"name\"]` - Sets the name of the Wildfire Spirit. Displays the name if no new name is given."
+-f "Wildfire Spirit Image|`{ctx.prefix}{ctx.alias} image [url]` - Sets the image of the Wildfire Spirit. Displays the image if no new url is given."
+-f "**NOTE**|Because of the nature of the Fiery Teleportation feature of the statblock and the limitations of CritterDB, an attack has to be imported for it. You can do this using `{ctx.prefix}{ctx.alias} import`" 
+-f "Bestiary|You need to have this bestiary as your active bestiary for this alias to work. This can also be made a server bestiary. 
+`!bestiary import https://critterdb.com/#/publishedbestiary/view/61846844af3aa903ed258064`" 
+-f "Help|`{ctx.prefix}{ctx.alias} help|?` - Displays the help." 
+-color {color} -thumb {image} 
+"""
+if not lvl: 
+       return f"echo You are not a Druid."
+if lvl < 2:
+       return f"echo You are not a level 2 Druid yet."
+if sclass != "Wildfire":
+       return """echo You are not a Circle of Wildfire Druid. You can set this with the `!level` alias, or manually by doing `!cvar subclass {"DruidLevel": "Wildfire}` (don't change anything, simply copy paste)"""
+if "&1&".lower() == "name":
+       if len(args)==2:
+              old = SD.name
+              SD['name'] = "&2&"
+              new = SD.name
+              ch.set_cvar(sd, dump_json(SD))
+              return f"""embed -title "{name} name's of their Wildfire Spirit!" -f "Old name|{old}" -f "New name|{new}" -thumb {SD.image}"""
+       else:
+              old = SD.name
+              return f"echo Your Wildfire Spirit is named {old}"
+
+if "&1&".lower() == "image":
+       if len(args)==2:
+              old = SD.image
+              SD['image'] = "&2&"
+              ch.set_cvar(sd, dump_json(SD))
+              return f'embed -title "{name} sets the image of their Wildfire Spirit!" -image {SD.image} -f "Old Image|{old}"'
+       else:
+              return f"""embed -title "Your Wildfire Spirit's Image" -image {SD.image} -f "Image Link|{SD.image}" """
+
+if "&1&".lower() == 'import':
+       return '''attack import {"name":"Fiery Teleportation","automation":[{"type":"target","target":"all","effects":[{"type":"save","stat":"dex","fail":[{"type":"damage","damage":"1d6+{proficiencyBonus}[fire] "}],"success":[],"dc":""}]},{"type":"text","text":"The spirit and each willing creature of your choice within 5 feet of it teleport up to 15 feet to unoccupied spaces you can see. Then each creature within 5 feet of the space that the spirit left must succeed on a Dexterity saving throw against your spell save DC or take 1d6 + PB fire damage."}],"_v":2,"proper":false,"verb":null}
+       '''
+       
+if not combat() or not combat().me:
+       return f"echo Your character is not in Initiative. This alias does not function without it."
+
+groupname = f'''{name[:2]}\'s Circle of Wildfire '''
+hp  = 5+lvl*5
+bonus = ch.spellbook.dc-(8+wisdomMod+proficiencyBonus)
+atk = f'{wisdomMod+proficiencyBonus+bonus}' 
+
+
+
+
+if "&1&".lower() in "addjoin":
+       out = f"""multiline
+{ctx.prefix}init opt "{name}" -group "{groupname}" 
+{ctx.prefix}init madd "Wildfire Spirit" -hp {hp} -ac 13 -name "{SD.name}" -group "{groupname}" -h 
+{ctx.prefix}init effect "{SD.name}" "Flame Seed"  -attack "{atk}|1d6+{proficiencyBonus}[fire]|{SD.name} attacks with a Flame Seed" """
+       return out
+
+return f"""embed 
+-title "{name} did not give a subcommand!"   
+-desc "This alias is for the Wildfire Spirit from the Wildfire subclass."
+-f "Adding to Combat|`{ctx.prefix}{ctx.alias} join|add` Adds the Wildfire Spirit to combat."
+-f "Wildfire Spirit Name|`{ctx.prefix}{ctx.alias} name [\"name\"]` - Sets the name of the Wildfire Spirit. Displays the name if no new name is given."
+-f "Wildfire Spirit Image|`{ctx.prefix}{ctx.alias} image [url]` - Sets the image of the Wildfire Spirit. Displays the image if no new url is given."
+-f "**NOTE**|Because of the nature of the Fiery Teleportation feature of the statblock and the limitations of CritterDB, an attack has to be imported for it. You can do this using `{ctx.prefix}{ctx.alias} import`" 
+-f "Bestiary|You need to have this bestiary as your active bestiary for this alias to work. This can also be made a server bestiary. 
+`!bestiary import https://critterdb.com/#/publishedbestiary/view/61846844af3aa903ed258064`" 
+-f "Help|`{ctx.prefix}{ctx.alias} help|?` - Displays the help." 
+-color {color} -thumb {image} 
+"""
+</drac2> 

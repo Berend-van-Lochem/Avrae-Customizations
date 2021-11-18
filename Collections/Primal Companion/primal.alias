@@ -1,0 +1,114 @@
+<drac2>
+ch=character()
+args = &ARGS&
+pc='PrimalCompanion'
+lvl = ch.levels.get('Ranger',0)
+sclass=load_json(get("subclass",{})).get("RangerLevel","")
+ch.set_cvar_nx(pc, '{"Sky": { "image": "https://media.discordapp.net/attachments/846062066225250365/881193933336612924/88368b239f78b1be5246b9a4b706946f.png", "name": "Beast of the Sky"  },"Land": { "image": "https://media.discordapp.net/attachments/846062066225250365/881193791757910156/035c0395f48db185b97f7d3ba5ac7c59.png","name": "Beast of the Earth" }, "Sea": { "image": "https://media.discordapp.net/attachments/846062066225250365/881194173892542474/latest.png","name": "Beast of the Sea"},"active": "Land"} ')
+PC = load_json(get(pc))
+active = PC['active']
+
+
+Help = f"""embed 
+       -title "{name} needs help with Primal Companion!"   
+       -desc "This alias is for the Primal Companion from the Beast Master Ranger: TCoE Variant Feature."
+       -f "Swapping between beasts|`{ctx.prefix}{ctx.alias} switch sky|land|sea` Switches to a different beasts. Name and image of the beasts are stored seperately for each beast."
+       -f "Adding to Combat|`{ctx.prefix}{ctx.alias} join|add` Adds the Primal Companion to combat."
+       -f "Overview|`{ctx.prefix}{ctx.alias} overview` Shows an overview of all your companions with their name and image"
+       -f "Primal Companion Name|`{ctx.prefix}{ctx.alias} name [\"name\"]` - Sets the name of your active Primal Companion. Displays the name if no new name is given."
+       -f "Primal Companion Image|`{ctx.prefix}{ctx.alias} image [url]` - Sets the image of your active Primal Companion. Displays the image if no new url is given."
+       -f "Bestiary|You need to have this bestiary as your active bestiary for this alias to work. This can also be made a server bestiary. You can swap to it with `!bestiary Tasha's Primal Companions`
+       `!bestiary import https://critterdb.com/#/publishedbestiary/view/613e7143af3aa903ed1ed113`" 
+       -f "Help|`{ctx.prefix}{ctx.alias} help|?` - Displays the help." 
+       -color {color} -thumb {image} 
+       """
+if "&1&".lower() in "help?":
+       return Help
+if not lvl: return f"echo You are not an Ranger."
+if lvl < 3: return f"echo You are not a level 3 Ranger yet."
+if sclass != "Beast Master": return """echo You are not a Beastmaster Ranger. You can set this with the `!level` alias, or manually by doing `!cvar subclass {"RangerLevel": "Beast Master"}`"""
+
+if "&1&".lower() == "switch":
+       if len(args) ==2:
+              old = PC[active]
+              if "&2&".lower() == 'land':
+                     PC['active'] = 'Land' 
+                     active = PC['active']
+                     ch.set_cvar(pc, dump_json(PC))
+                     return f"""embed -title "{name} switches their primal companion to {PC[active].name}, which is a Beast of the {PC['active']}! " -thumb {PC[active].image}"""
+              elif "&2&".lower() == 'sea':
+                     PC['active'] = 'Sea'
+                     active = PC['active']
+                     ch.set_cvar(pc, dump_json(PC))
+                     return f"""embed -title "{name} switches their primal companion to {PC[active].name}, which is a Beast of the {PC['active']}! " -thumb {PC[active].image}"""
+              elif "&2&".lower() == 'sky':     
+                     PC['active'] = 'Sky'
+                     active = PC['active']
+                     ch.set_cvar(pc, dump_json(PC))
+                     return f"""embed -title "{name} switches their primal companion to {PC[active].name}, which is a Beast of the {PC['active']}! " -thumb {PC[active].image}"""
+              ch.set_cvar(pc, dump_json(PC))
+              
+       else:
+              old = PC[active].name
+              return f"""echo Your current Primal Companion is named {old} and is a Beast of the {PC['active']}!  """
+
+
+if "&1&".lower() == "name":
+       if len(args)==2:
+              old = PC[active].name
+              PC[active]['name'] = "&2&"
+              new = PC[active].name
+              ch.set_cvar(pc, dump_json(PC))
+              return f"""embed -title "{name} names their Primal Companion, which is a Beast of the {PC['active']}!" -f "Old name|{old}" -f "New name|{new}" -thumb {PC[active].image}"""
+       else:
+              old = PC[active].name
+              return f"echo Your Primal Companion is named {old}"
+
+if "&1&".lower() == "image":
+       if len(args)==2:
+              old = PC[active].image
+              PC[active]['image']= "&2&"
+              new = PC[active].image
+              ch.set_cvar(pc, dump_json(PC))
+              return f'''embed -title "{name} sets the image of their Primal Companion, which is a Beast of the {PC['active']}!" -image {new} -f "Old Image|{old}" ''' 
+       else:
+              return f"""embed -title "Your Primal Companion's Image" -image {PC[active].image} -f "Image Link|{PC[active].image}" """
+
+
+if "&1&".lower() == "overview":
+       return f"""embed -title "{name} checks all their primal companions!" -thumb {image} -f "Beast of the Sky|**Name:** {PC['Sky'].name}\n**Image:** {PC['Sky'].image}" -f "Beast of the Land|**Name:** {PC['Land'].name}\n**Image:** {PC['Land'].image}" -f "Beast of the Sea|**Name:** {PC['Sea'].name}\n**Image:** {PC['Sea'].image}" """
+if not combat() or not combat().me:
+       return f"echo Your character is not in Initiative. This alias does not function without it."
+
+groupname = f'''{name[:2]}\'s Primal Companion '''
+ac  = 13+proficiencyBonus
+hp  = 5+lvl*4 if active == 'sky' else 5+lvl*5
+atk = ch.spellbook.sab
+maul = f"{atk}|1d8+{proficiencyBonus+2}[slashing]|{PC[active].name} attacks with Maul"
+bind =  f"{atk}|1d6+{proficiencyBonus+2}[piercing]|{PC[active].name} attacks with Bind"
+shred =  f"{atk}|1d4+{proficiencyBonus+3}[slashing]|{PC[active].name} attacks with Shred"
+magic = 'magical' if lvl>6 else ''              
+if active == 'Land':
+       attack = maul
+       atkname = 'Maul'
+       monster = "Beast of the Land"
+elif active == 'Sea':
+       attack = bind
+       atkname = 'Bind' 
+       monster = "Beast of the Sea"
+else: 
+       attack = shred
+       atkname = 'Shred' 
+       monster = "Beast of the Sky"
+
+if "&1&".lower() in "addjoin":
+       out = f"""multiline
+{ctx.prefix}init opt "{name}" -group "{groupname}" 
+{ctx.prefix}init madd "{monster}" -hp {hp} -ac {ac} -name "{PC[active].name}" -group "{groupname}" -h 
+{ctx.prefix}init effect "{PC[active].name}" {atkname} -attack "{attack}" {magic}
+{ctx.prefix}init effect "{PC[active].name}" "Primal Bond" -sb {proficiencyBonus} -cb {proficiencyBonus} """
+       return out
+
+return Help 
+return f"echo Achievement unlocked: How did we get here?"
+</drac2> 

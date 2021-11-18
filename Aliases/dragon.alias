@@ -1,0 +1,63 @@
+!alias dragon embed <drac2>
+base = f'''-color {color} -title "Random Dragon Generator" -footer "Made by VeryGreatFrog#6253 - Source: FToD" '''
+Age  = load_json(get_gvar("c20f4df1-ecad-49a1-803f-c59cf1bb7696"))
+Type = load_json(get_gvar("9021dae1-206c-455e-9b92-ac18ab24a288"))
+wgoa = load_json(get_gvar("3fa81734-64a9-4941-b5d7-c5f328487098"))
+ygoa = load_json(get_gvar("449d3d72-187d-43c7-81f1-7b48c667fd34"))
+agoa = load_json(get_gvar("c0d965cd-3b9e-4964-98b9-f98063d0ae52"))
+cgoa = load_json(get_gvar("02a66b97-0e67-4c8e-b7b7-02e7a8b89fe8"))
+mcol = load_json(get_gvar("bbcc3c40-64e4-4fd3-b64a-afec6ff1d992"))
+ccol = load_json(get_gvar("94e2e19e-aa0b-406a-ad72-c8a0bc6be866"))
+gcol = load_json(get_gvar("36e05244-5abe-4822-b71f-37b17585e958"))
+look = load_json(get_gvar("01c72a7c-e15d-4f81-b993-cb5d4f4f4c42"))
+does = load_json(get_gvar("c7c0deb9-62dd-4a32-956d-f1acab6846a0"))
+bond = load_json(get_gvar("f3300f12-0ff5-48ce-b85e-be6ae3e151d1"))
+flaw = load_json(get_gvar("de3ffa33-ca48-4359-a3d9-27e2432b8f59"))
+list1 = ["Aeros", "Andra", "Arauth", "Auntyr", "Calaun", "Dalagh", "Endar", "Gaul", "Ix", "Lham", "Mere", "Nur", "Othim", "Rith", "Skad", "Thoth", "Tratain", "Umer", "Vala", "Vureem"]
+list2 = ["Agha", "Andusk", "Arveia", "Auth", "Ciym", "Durg", "Ethar", "Golos", "Iyliam", "Lothtor", "Miir", "Nym", "Palar", "Rysear", "Surr", "Thrax", "Treori", "Uryte", "Valos", "Waur"]
+list3 = ["Akkan", "Angkar", "Aryz", "Bahr", "Claug", "Eir", "Fel", "Guth", "Jhar", "Malae", "Morn", "Oloth", "Raali", "Saryx", "Thal", "Thriin", "Turace", "Uxin", "Vinc", "Zundae"]
+list4 = ["Alae", "Aradace", "Atar", "Bala", "Daerev", "Elden", "Galad", "Kerin", "Kerin", "Marun", "Nabal", "Ontor", "Ragoth", "Ser", "Thanach", "Tostyn", "Ualin", "Vaer", "Voar", "Zyreph"]
+
+pick1 = randchoice(list1)
+pick2 = randchoice(list2)
+pick3 = randchoice(list3)
+pick4 = randchoice(list4)
+
+picks = [pick1, pick2, pick3, pick4]
+final = []
+
+while picks:
+  pick = randchoice(picks)
+  final.append(pick)
+  picks.remove(pick)
+
+final  = [x.lower() for x in final if x]
+name = f''' -f "Name|{final[0].capitalize()}{final[1]}{final[2]}{final[3]}" '''
+dtyp = randchoice(Type)
+age  = randchoice(Age)
+if age == "Wyrmling":
+       goal = randchoice(wgoa)
+elif age == "Young":
+       goal = randchoice(ygoa)
+elif age == "Adult":
+       goal = randchoice(agoa)
+elif age == "Ancient":
+       goal = randchoice(cgoa)
+if dtyp == "Metallic":
+       dcol = mcol
+elif dtyp == "Chromatic":
+       dcol = ccol
+elif dtyp == "Gem":
+       dcol = gcol
+base += name 
+base += f''' -f "Type|{age} {randchoice(dcol)} Dragon" '''
+base += f''' -f "Appearance|{randchoice(look)}" '''
+base += f''' -f "Mannerisms|{randchoice(does)}" '''
+base += f''' -f "Bonds|{randchoice(bond)}" '''
+base += f''' -f "Flaws and Secrets|{randchoice(flaw)}" '''
+base += f''' -f "Goals|{goal}" '''
+return base
+</drac2>
+-thumb https://media.discordapp.net/attachments/817724255432081418/903572388757778472/unknown.png
+-color <color>
+

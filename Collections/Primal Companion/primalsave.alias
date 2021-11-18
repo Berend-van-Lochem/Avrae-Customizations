@@ -1,0 +1,28 @@
+<drac2>
+ch=character()
+args = &ARGS&
+pc='PrimalCompanion'
+lvl = ch.levels.get('Ranger',0)
+sclass=load_json(get("subclass",{})).get("RangerLevel","")
+ch.set_cvar_nx(pc, '{"Sky": { "image": "https://media.discordapp.net/attachments/846062066225250365/881193933336612924/88368b239f78b1be5246b9a4b706946f.png", "name": "Beast of the Sky"  },"Land": { "image": "https://media.discordapp.net/attachments/846062066225250365/881193791757910156/035c0395f48db185b97f7d3ba5ac7c59.png","name": "Beast of the Earth" }, "Sea": { "image": "https://media.discordapp.net/attachments/846062066225250365/881194173892542474/latest.png","name": "Beast of the Sea"},"active": "Land"}')
+PC = load_json(get(pc))
+active = PC['active']
+
+if active == 'Land':
+       monster = "Beast of the Land"
+elif active == 'Sea': 
+       monster = "Beast of the Sea"
+else: 
+       monster = "Beast of the Sky"
+
+if "&1&".lower() in "help?":
+    return f"echo use `!primalsave <check> [additional arguments]` in the format of `!save` to roll a save."
+if not lvl: 
+       return f"echo You are not a Ranger."
+if lvl < 3:
+       return f"echo You are not a level 3 Ranger yet."
+if sclass != "Beast Master":
+       return """echo You are not a Beast Master. You can set this with the `!level` alias, or manually by doing `!cvar subclass {"RangerLevel": "Beast Master"}`"""
+
+return f"""ms "{monster}" &*& -title "{PC[active].name} makes a [sname] save!" -thumb {PC[active].image} -b {proficiencyBonus}"""
+</drac2>

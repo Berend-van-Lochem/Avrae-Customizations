@@ -1,0 +1,43 @@
+!alias emp embed <drac2>
+args,q,g,cc,ch=&ARGS&,get_gvar("686b58fa-87c9-49c4-ae37-3ce0d9b4ab1a"),get_gvar("8287ecdf-1829-4e30-b01e-18a0ea517ed0"),'Sorcery Points',character()
+i='-i' in args
+
+base = f'-title "{name} uses their Empowered Metamagic!" -desc "{q}" '
+if len(args) > 3 or 'help' in args or '?'in args or len(args)==0 or len(args)==1:
+    return f' -title "{name} checks the instructions!" -desc "{g}"'
+
+if not args[0].isdigit() or int(args[0])<1 or not 'd' in args[1]:
+  return f' -title "{name} checks the instructions!" -desc "{g}"'
+
+a = args[1].replace(" ", "")
+b = [j for j in a.split("+") if "d" in j]
+dices_split=[s.split('d') for s in b]
+dices_split=[d if d[0] else ['1',d[1]] for d in dices_split]
+
+if any(not d[0].isdigit() or not d[1].isdigit() for d in dices_split):
+    return f' -title "{name} checks the instructions!" -desc "{g}" '
+
+dices_int=[[max(1,int(d[0])),int(d[1])] for d in dices_split]
+total_dice = sum(d[0] for d in dices_int)
+
+if total_dice>max(charismaMod, 1):
+  return f"""-title  "You cannot reroll more than a number of dice equal to your Charisma modifier"  """
+
+if args[0].isdigit() and "d" in args[1]: 
+  od = int(args[0])
+  r=vroll('+'.join(f'{d[0]}d{d[1]}' for d in dices_int))  
+  base += f''' -f "New Damage:|{r}|inline"'''
+  base += f''' -f "Damage Difference:|`{od}` -> `{r.total}` = `{r.total - od:+}`|inline"'''
+  if not i and ch.cc_exists(cc) and ch.get_cc(cc):
+    ch.mod_cc(cc, -1)
+    base += f' -f "{cc}|{ch.cc_str(cc) + " (-1)" if not i else ""}" ' if ch.cc_exists(cc) else ""
+    return base
+  elif i: 
+    return base
+  elif ch.cc_exists(cc):
+    return f""" -title 'You do not have enough Sorcery Points.' -f '{cc}|{ch.cc_str(cc)} ' """
+  else:
+    return f""" -title 'You do not have a counter named Sorcery Points.' """
+</drac2>
+
+-footer "{{f'{ctx.prefix}{ctx.alias} <OriginalDamage> <XdY> [-i]'}} - By VeryGreatFrog#6253" -color <color> -thumb <image>

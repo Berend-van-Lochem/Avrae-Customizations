@@ -1,0 +1,25 @@
+<drac2>
+ch=character()
+args = &ARGS&
+sd='DrakeCompanion'
+lvl = ch.levels.get('Ranger',0)
+sclass=load_json(get("subclass",{})).get("RangerLevel","")
+ch.set_cvar_nx(sd, '{"name": "Drake Companion", "image": "https://media.discordapp.net/attachments/817724255432081418/905890405743210558/pact-drake.png","type": "fire"}')
+SD = load_json(get(sd))
+
+
+if "&1&".lower() in "help?":
+	return f"echo use `!{ctx.alias} <save> [additional arguments]` in the format of `!save` to roll a save."
+if not lvl: 
+       return f"echo You are not a Ranger."
+if lvl < 3:
+       return f"echo You are not a level 3 Ranger yet."
+if sclass != "Drakewarden":
+       return """echo You are not a Drakewarden. You can set this with the `!level` alias, or manually by doing `!cvar subclass {"RangerLevel": "Drakewarden"}`"""
+
+
+monStats=(1+(lvl>4)+(lvl>8)+(lvl>12)+(lvl>16))
+monster=["Drake Companion P6", "Drake Companion P5", "Drake Companion P4", "Drake Companion P3", "Drake Companion P2"][-monStats]
+
+return f"""ms "{monster}" &*& -title "{SD.name} makes a [sname] check!" -thumb {SD.image} """
+</drac2>

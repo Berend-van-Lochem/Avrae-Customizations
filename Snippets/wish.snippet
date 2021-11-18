@@ -1,0 +1,5 @@
+!snippet wish <drac2>
+if character().spellbook.get_slots(9) == 0:  err("You have no 9th level spell slots left.")
+character().spellbook.use_slot(9)
+return F""" -title "{name} casts [aname] by replicating it with Wish!" -l 8 -i -f "Spell Slots|{character().spellbook.slots_str(9)}"  """
+</drac2>

@@ -1,0 +1,32 @@
+embed -title "Library SVAR help"
+-desc 'You can set up an SVAR with settings for the library, that the whole server will use. Only Server Admins or Server Aliasers/Dragonspeaker\'s can set SVARs. 
+The contents is a dictionary containing lists. That means it contains settings corresponding to a key, and each setting has a list containing the options for said setting. 
+Here are the default settings for demonstration purposes:
+
+```json
+{
+"libraries": ["ac34f8ba-b7e8-4924-beae-0a104641a3bd"],
+"categories": ["fiction", "non-fiction"],
+"languages": ["common", "dwarvish", "elvish", "draconic", "gnomish", "halfling"],
+"genres": ["science", "magic", "guide", "bestiary", "story", "humanities", "myth"]
+}
+```
+
+The keys of each setting is what the alias uses to determine what books are available and what categories/languages/genres can be searched for. 
+
+```
+Key------------Information---------------------------
+-----------------------------------------------------
+libraries   =  The available GVARs in the server 
+categories  =  The available categories in the server
+languages   =  The available languages in the server
+genres      =  The available genres in the server
+```
+
+Everything must be lower-case, otherwise the alias might not work. If you want to add custom GVARs to `libraries`, simply add them as additional entries just like the other three settings. 
+You can change the list of each setting as you like, but if the GVAR contains settings that do not exist in the SVAR it will not work, so make sure these correspond. 
+
+For help setting SVARs, reference `!help svar`.
+For help on setting up custom GVARs for your library, reference `!library gvar`. 
+'
+-footer '!library - Made by VeryGreatFrog#6253' -color <color>

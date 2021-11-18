@@ -1,0 +1,25 @@
+<drac2>
+ch=character()
+args = &ARGS&
+sd='SteelDefender'
+lvl = ch.levels.get('Artificer',0)
+sclass=load_json(get("subclass",{})).get("ArtificerLevel","")
+ch.set_cvar_nx(sd, '{"name": "Steel Defender", "image": "https://media-waterdeep.cursecdn.com/avatars/thumbnails/7774/607/1000/1000/637095984290192664.png"}')
+SD = load_json(get(sd))
+
+
+if "&1&".lower() in "help?":
+	return f"echo use `!steelcheck <check> [additional arguments]` in the format of `!check` to roll a check."
+if not lvl: 
+       return f"echo You are not an Artificer."
+if lvl < 3:
+       return f"echo You are not a level 3 Artificer yet."
+if sclass != "Battle Smith":
+       return """echo You are not a Battle Smith. You can set this with the `!level` alias, or manually by doing `!cvar subclass {"ArtificerLevel": "Battle Smith"}`"""
+
+
+monStats=(1+(lvl>4)+(lvl>8)+(lvl>12)+(lvl>16))
+monster=["w0xwk5y1wk", "wcjc3y2d8z", "x6c0wi78k5", "eui2v3bi4m", "5ktaz98raj"][-monStats]
+
+return f"""mc {monster} &*& -title "{SD.name} makes a [cname] check!" -thumb {SD.image} """
+</drac2>

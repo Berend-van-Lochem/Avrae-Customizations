@@ -1,0 +1,13 @@
+!snippet gw <drac2>
+p =  character().cvars.get("genie","None")
+d =  { 
+    "Dao": "[bludgeoning]",
+    "Djinni": "[thunder]",
+    "Efreeti": "[fire]",
+    "Marid": "[cold]",
+    "None":  ""
+    }
+return f'-d1 {proficiencyBonus}{d[p]} '
+# run `!cvar genie <genie name>`, then you are all set to use this snippet.
+</drac2>
+-f "Genie's Wrath|Once during each of your turns when you hit with an attack roll, you can deal extra damage to the target equal to your proficiency bonus. The type of this damage is determined by your patron: bludgeoning (dao), thunder (djinni), fire (efreeti), or cold (marid)"

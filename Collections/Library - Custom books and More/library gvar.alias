@@ -1,0 +1,49 @@
+embed -title "Library GVAR help" -color <color>
+-desc 'You can set up your own GVAR to use with this alias. Reference `!library svar` how to put it to use.
+The contents of the GVAR is a list of dictionaries. That means it is a list containing books, and each book has keys that correspond to a certain quality of the book and a certain command. Here is a tiny GVAR for demonstration purposes:
+
+```json
+[
+   {
+      "T": "Cuts and Coins",
+      "A": "Porky Noth",
+      "L": "Common, Elvish, Gnomish",
+      "D": "An action filled novel.",
+      "G": "Fiction",
+      "S": "Story"
+   },
+   {
+      "T": "Lost and Found, a Feywild Adventure",
+      "A": "Roylan Probably",
+      "L": "Common",
+      "D": "A story about a Dwarf in the feywild.",
+      "G": "Fiction",
+      "S": "Humanities"
+   }
+]
+```
+
+The keys of each entry is what the alias uses to look up the information about a book. They mean the following:
+
+```h
+Key---Information---Lookup Command
+----------------------------------
+T  =  Title       = -book <title>
+A  =  Author 
+L  =  Languages   = -lang <lang>
+D  =  Description
+G  =  Category    = -cat <category>
+S  =  Genre       = -genre <genre>
+```
+Each book must have each key. Each book must have only one category. Each book must have only one genre. If you have multiple gvars, the genres and categories must be the same for every gvar. An entry that is not in the lists that are set server wide cannot be searched for.
+If this is not done, the alias will error or provide improper results. 
+
+However, languages may be multiple, split by a `,`. 
+The description can be as long as you would like.
+
+The default GVAR is `ac34f8ba-b7e8-4924-beae-0a104641a3bd`, containing general books about a variety of subjects which will generally fit into every world. You may add or take out entries for your own server. 
+
+For help setting SVARs, reference `!help svar`
+For help for Server Admins how to customise the alias for the whole server, reference `!library svar`
+'
+-footer '!library - Made by VeryGreatFrog#6253'

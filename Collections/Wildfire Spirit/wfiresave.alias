@@ -1,0 +1,24 @@
+<drac2>
+ch=character()
+args = &ARGS&
+sd='WildfireSpirit'
+lvl = ch.levels.get('Druid',0)
+sclass=load_json(get("subclass",{})).get("DruidLevel","")
+ch.set_cvar_nx(sd, '{"name": "Wildfire Spirit", "image": "https://media.discordapp.net/attachments/817724255432081418/905957736196481055/lex-witt-lyns-wildfire-spirit.png"}')
+SD = load_json(get(sd))
+
+
+if "&1&".lower() in "help?":
+	return f"echo use `!wfiresave <save> [additional arguments]` in the format of `!save` to roll a save. Does not pull save bonuses from combat."
+if not lvl: 
+       return f"echo You are not a Druid."
+if lvl < 2:
+       return f"echo You are not a level 2 Druid yet yet."
+if sclass != "Wildfire":
+       return """echo You are not a Wildfire Druid. You can set this with the `!level` alias, or manually by doing `!cvar subclass {"DruidLevel": "Wildfire}`"""
+
+
+
+
+return f"""ms "Wildfire Spirit" &*& -title "{SD.name} makes a [sname] save!" -thumb {SD.image} """
+</drac2>

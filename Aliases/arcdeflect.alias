@@ -1,0 +1,44 @@
+<drac2>
+if (ch:=character()).levels.get("Wizard")<2:
+	return err("You are not a level 2 wizard yet.")
+sub = load_json(get("subclass", "{}")).get("WizardLevel", "") 
+if sub != "War Magic":
+	return err("You are not a war magic wizard.")
+args = &ARGS&
+parse  = argparse(args)
+hp     = parse.last('hp', 0, int)
+effect = parse.last('effect', None, str)
+save   = parse.last('save', 0, int)
+attack = True if "attack".lower() in "&*&".lower() and &ARGS& else False
+out = F"""embed -title "{name} uses Arcane Deflection!" -thumb {image} -footer "{ctx.prefix+ctx.alias} [attack] [-save #] [-hp #] [-effect <effectName>] | Made by VeryGreatFrog#6253" -desc "At 2nd level, you have learned to weave your magic to fortify yourself against harm. When you are hit by an attack or you fail a saving throw, you can use your reaction to gain a +2 bonus to your AC against that attack or a +4 bonus to that saving throw.\nWhen you use this feature, you can’t cast spells other than cantrips until the end of your next turn." """
+if not args:
+	return out
+if "?help" in args:
+	return f"""help {ctx.alias} -here"""
+if attack and save:
+	return err("You can't both block an attack and a saving throw.")
+if not save:
+	out += F""" -title "{name} uses Arcane Deflection to block an attack!" -f "New Armor Class|{ch.ac+2}|inline" """
+	if hp:
+		ch.modify_hp(hp,overflow=False)
+		out += F""" -f "HP|{ch.hp_str()} (+{hp})|inline" """
+	if effect:
+		if (c:=combat()):
+			x = c.me.get_effect(effect)
+			c.me.remove_effect(effect)
+			out += F""" -f "Removed Effect|{x}|inline" """
+	return out
+if save:
+	out += F""" -title "{name} uses Arcane Deflection to gain a bonus to a saving throw!" -f "New Saving Throw|{save+4}|inline" """
+	if hp:
+		ch.modify_hp(hp,overflow=False)
+		out += F""" -f "HP|{ch.hp_str()} (+{hp})|inline" """
+	if effect:
+		if (c:=combat()):
+			x = c.me.get_effect(effect)
+			c.me.remove_effect(effect)
+			out += F""" -f "Removed Effect|{x}|inline" """
+	return out
+return out
+err("Achievement Unlocked: How did we get here?")
+</drac2>

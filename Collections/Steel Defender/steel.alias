@@ -1,6 +1,6 @@
 <drac2>
 ch=character()
-args = &ARGS&
+args = argparse(&ARGS&)
 sd='SteelDefender'
 lvl = ch.levels.get('Artificer',0)
 sclass=load_json(get("subclass",{})).get("ArtificerLevel","")
@@ -14,6 +14,7 @@ if "&1&".lower() in "help?":
        -f "Adding to Combat|`{ctx.prefix}{ctx.alias} join|add` Adds the Steel Defender to combat."
        -f "Steel Defender Name|`{ctx.prefix}{ctx.alias} name [\"name\"]` - Sets the name of the Steel Defender. Displays the name if no new name is given."
        -f "Steel Defender Image|`{ctx.prefix}{ctx.alias} image [url]` - Sets the image of the Steel Defender. Displays the image if no new url is given."
+       -f "Steel Defender Attributes|`{ctx.prefix}{ctx.alias} set <attribute> [value]` - Sets the `ac`, `hp`, or `thp` of the Steel Defender. Set to 0 to return to default."
        -f "Bestiary|You need to have this bestiary as your active bestiary for this alias to work. This can also be made a server bestiary. 
        `!bestiary import https://critterdb.com/#/publishedbestiary/view/60eb1df9af3aa903ed176684`" 
        -f "Help|`{ctx.prefix}{ctx.alias} help|?` - Displays the help." 
@@ -35,6 +36,19 @@ if "&1&".lower() == "name":
        else:
               old = SD.name
               return f"echo Your steel defender is named {old}"
+              
+if "&1&".lower() == "set":
+       if len(args)==3 and "&2&" in ['ac','hp','thp']:
+              old = '&2&' in SD.keys() and int(SD['&2&']) or 0
+              SD['&2&'] = int("&3&")
+              new = SD['&2&']
+              ch.set_cvar(sd, dump_json(SD))
+              return f"""embed -title "{name} changes the {'&2&'.upper()} of their Steel Defender!" {old and f'-f "Old value|{old}"'} -f "New value|{new}" -thumb {SD.image}"""
+       elif len(args)==2 and "&2&" in ['ac','hp','thp']:
+              old = '&2&' in SD.keys() and int(SD['&2&']) or 0
+              return old and f"echo Your steel defender's {'&2&'.upper()} is {old}" or f"echo Your steel defender's {'&2&'.upper()} is default"
+       else:
+              return f"echo Provide either `ac`, `hp`, or `thp` to set or view the permanent attribute."
 
 if "&1&".lower() == "image":
        if len(args)==2:
@@ -48,8 +62,10 @@ if not combat() or not combat().me:
        return f"echo Your character is not in Initiative. This alias does not function without it."
 
 groupname = f'''{name[:2]}\'s Battle Smith '''
-ac  = 15 if lvl<15 else 17
-hp  = 2+intelligenceMod+lvl*5
+args = argparse(&ARGS&)
+ac  = args.last('ac',default=0,type_=int) or 'ac' in SD.keys() and int(SD.ac) or 15 if lvl<15 else 17
+hp  = args.last('hp',default=0,type_=int) or 'hp' in SD.keys() and int(SD.hp) or 2+intelligenceMod+lvl*5
+thp = args.last('thp',default=0,type_=int) or int('thp' in SD.keys()) and int(SD.thp)
 bonus = ch.spellbook.dc-(8+intelligenceMod+proficiencyBonus)
 atk = f'{intelligenceMod+proficiencyBonus+bonus}' 
 monStats=(1+(lvl>4)+(lvl>8)+(lvl>12)+(lvl>16))
@@ -58,7 +74,7 @@ monster=["w0xwk5y1wk", "wcjc3y2d8z", "x6c0wi78k5", "eui2v3bi4m", "5ktaz98raj"][-
 if "&1&".lower() in "addjoin":
        out = f"""multiline
 {ctx.prefix}init opt "{name}" -group "{groupname}" 
-{ctx.prefix}init madd {monster} -hp {hp} -ac {ac} -name "{SD.name}" -group "{groupname}" -h 
+{ctx.prefix}init madd {monster} -hp {hp} -ac {ac} -name "{SD.name}" -group "{groupname}" -h -thp {thp}
 {ctx.prefix}init effect "{SD.name}" "Force-Empowered Rend"  -attack "{atk}|1d8+{proficiencyBonus}[force]|{SD.name} attacks with a Force-Empowered Rend" """
        return out
 

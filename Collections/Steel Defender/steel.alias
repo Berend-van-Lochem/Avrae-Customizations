@@ -79,7 +79,7 @@ return f"""embed
 -f "Adding to Combat|`{ctx.prefix}{ctx.alias} join|add` Adds the Steel Defender to combat."
 -f "Steel Defender Name|`{ctx.prefix}{ctx.alias} name [\"name\"]` - Sets the name of the Steel Defender. Displays the name if no new name is given."
 -f "Steel Defender Image|`{ctx.prefix}{ctx.alias} image [url]` - Sets the image of the Steel Defender. Displays the image if no new url is given."
--f "Steel Defender Group|`{ctx.prefix}{ctx.alias} group [\"group name\"]` - Sets the group the Steel Defender and character will join (Default: {name[:2]}\'s Battle Smith). Displays the current group if no new group is given."
+-f "Steel Defender Group|`{ctx.prefix}{ctx.alias} group [\"group\"]` - Sets the group the Steel Defender and character will join (Default: `{name[:2]}\'s Battle Smith`). Displays the current group if no new group is given."
 -f "Bestiary|You need to have this bestiary as your active bestiary for this alias to work. This can also be made a server bestiary. 
 `!bestiary import https://critterdb.com/#/publishedbestiary/view/60eb1df9af3aa903ed176684`" 
 -f "Help|`{ctx.prefix}{ctx.alias} help|?` - Displays the help." 

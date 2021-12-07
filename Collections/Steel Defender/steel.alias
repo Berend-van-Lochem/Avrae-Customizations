@@ -36,6 +36,17 @@ if "&1&".lower() == "name":
               old = SD.name
               return f"echo Your steel defender is named {old}"
 
+if "&1&".lower() == "group":
+       if len(args)==2:
+              old = SD.get("group", f'''{name[:2]}\'s Battle Smith ''')
+              SD['group'] = "&2&"
+              new = SD.group
+              ch.set_cvar(sd, dump_json(SD))
+              return f"""embed -title "{name} sets their Steel Defender's group!" -f "Old group|{old}" -f "New group|{new}" -thumb {SD.image}"""
+       else:
+              old = SD.get("group", f'''{name[:2]}\'s Battle Smith ''')
+              return f"echo Your steel defender will join group: {old}"
+
 if "&1&".lower() == "image":
        if len(args)==2:
               old = SD.image
@@ -47,7 +58,7 @@ if "&1&".lower() == "image":
 if not combat() or not combat().me:
        return f"echo Your character is not in Initiative. This alias does not function without it."
 
-groupname = f'''{name[:2]}\'s Battle Smith '''
+groupname = SD.get("group", f'''{name[:2]}\'s Battle Smith ''')
 ac  = 15 if lvl<15 else 17
 hp  = 2+intelligenceMod+lvl*5
 bonus = ch.spellbook.dc-(8+intelligenceMod+proficiencyBonus)

@@ -2,63 +2,130 @@
 args               = &ARGS& 
 parse              = argparse(&ARGS&)
 out                = f"""embed  -color {color} -thumb https://media.discordapp.net/attachments/846062066225250365/887043638213869628/b134df5329cb20a97f303f36ddfbd771.png """
-settings           = load_json(get_svar("LibrarySettings",'{"libraries":["ac34f8ba-b7e8-4924-beae-0a104641a3bd"],"categories":["fiction","non-fiction"],"languages":["common","dwarvish","elvish","draconic","gnomish","halfling"],"genres":["science","magic","guide","bestiary","story","humanities","myth"]}'))
+settings           = load_json(get_svar("LibrarySettings",'{"enabled":true,"cooldown":0, "secretSkills":["investigation"],"channels":[], "libraries":["ac34f8ba-b7e8-4924-beae-0a104641a3bd"], "randomSecrets":true, "secretSearch": true, "categories":["fiction","non-fiction"],"languages":["common","dwarvish","elvish","draconic","gnomish","halfling"],"genres":["science","magic","guide","bestiary","story","humanities","myth"]}'))
 overview           = True if "overview".lower() in "&*&".lower() and &ARGS& else False
+secret_search      = True if "secret".lower() in "&*&".lower() and &ARGS& else False
 page_search        = parse.last('page',1,int)
 book_search        = parse.last('book',default='').lower()
 category_search    = parse.last('cat', default='').lower()
 genre_search       = parse.last('genre',default='').lower()
-language_search    = parse.get('lang', default='')
-language_search    = [x.lower() for x in language_search if x]
-category_list      = settings.categories
-genre_list         = settings.genres
-language_list      = settings.languages
+author_search      = parse.last('author',default='').lower()
+language_search    = [x.lower() for x in parse.get('lang',default='') if x]
+random_secrets     = True if settings.get("randomSecrets") == True else False
+library_books      = []
 category_books     = []
 genre_books        = []
+author_books       = []
 language_books     = []
 finished_books     = []
 book_list          = []
-matching_book_list = []        
+matching_book_list = []
 n                  = '\n'
+ch                 = character()
+cs                 = ch.skills
+secret_search_list = settings.get("secretSkills",["investigation"])
+cooldown           = int(settings.get("cooldown",0))
+max_skill_list     = [cs[skill].value for skill in secret_search_list]
+search_skill_index = max_skill_list.index(max(max_skill_list))
+search_skill       = secret_search_list[search_skill_index]
+
 
 if args and args[0] in "?help":
     return f"""help {ctx.alias} -here"""
+
+if settings.get("enabled") == False:
+  return f"""embed " -title "This alias is disabled in this server." -color {color} """
+
+if settings.get("channels") and ctx.channel.id not in settings.get("channels"):
+  return f"""embed " -title "This alias cannot be run in this channel." -color {color} """
 library = []
 for gvar in settings.libraries:
      library += load_json(get_gvar(gvar))
 
-book_term     = "All"
-genre_term    = "All"
-category_term = "All"
-language_term = "All"
-# Filter field construction
-if book_search:
-    book_term = book_search.capitalize()
-if genre_search:
-    genre_term = genre_search.title()
-if category_search:
-    category_term = category_search.title()
-if language_search:
-    language_term = ', '.join(language_search).title()
-filters = f"""-f "Filters|Title: {book_term}{n}Category: {category_term}{n}Genre: {genre_term}{n}Languages: {language_term}" """
+
+
+filters = f""" -f "Filters|Title: {book_search.capitalize() if book_search else "All"}{n}
+        Author: {author_search.capitalize() if author_search else "All"}{n}
+        Category: {category_search.title() if category_search else "All"}{n}
+        Genre: {genre_search.title() if genre_search else "All"}{n}
+        Languages: {', '.join(language_search).title() if language_search else "All"}" 
+        """
 
 
 
 
 for book in library:
-    if not category_search or category_search not in category_list or book.G.lower() == category_search:
+    if not random_secrets and not book_search and not author_search:
+      if book.get("DC"):
+        continue
+    library_books.append(book)
+for book in library_books:
+    if not category_search or category_search not in settings.categories or book.G.lower() == category_search:
         category_books.append(book)
 # filter on categories
 for book in category_books:
-    if not genre_search or genre_search not in genre_list or book.S.lower() == genre_search:
+    if not genre_search or genre_search not in settings.genres or book.S.lower() == genre_search:
         genre_books.append(book)
-# filter on genres            
+#filter on genres
 for book in genre_books:
-    if (not language_search) or (not any([l in language_list for l in language_search])) or (any([x in book.L.lower() for x in language_search])):
+    if not author_search or book.A.lower() == author_search:
+        author_books.append(book)
+# filter on author
+for book in author_books:
+    if (not language_search) or (not any([l in settings.languages for l in language_search])) or (any([x in book.L.lower() for x in language_search])):
            finished_books.append(book)
 #filter on languages
 
+if cooldown and not overview:
+  last_used = int(get("LastLibrary",0))
+  if not last_used+cooldown < time():
+    out += f"""embed -title "{name} searches for books too fast." -f "Cooldown|You can do this again at <t:{last_used+cooldown}:t>."  """
+    return out
+  else:
+    ch.set_cvar("LastLibrary",int(time()))
 
+if secret_search and settings.get("secretSearch") == True:
+    secret_books = []
+    book_found = False
+    for book in finished_books:
+        if book.get("DC"):
+            secret_books.append(book)
+
+    if not secret_books:
+        return f"""embed {filters} -title "{name} was unable to find any secret books books with those filters." -thumb https://media.discordapp.net/attachments/846062066225250365/887043638213869628/b134df5329cb20a97f303f36ddfbd771.png"""
+
+    if book_search:
+        matching_books = [book for book in secret_books if book_search == book.T.lower()] or [book for book in secret_books if book_search in book.T.lower()] 
+
+        if len(matching_books) > 1:
+            for book in matching_books:
+                matching_book_list.append(book.T)
+            return f"""embed {filters} -title "Matched multiple secret books. Please be more specific!" -f "Matches:" -f "{n.join(matching_book_list)[:1000]}" -footer "Books in this filter: {len(matching_book_list)} - By VeryGreatFrog#6253" -thumb https://media.discordapp.net/attachments/846062066225250365/887043638213869628/b134df5329cb20a97f303f36ddfbd771.png """
+
+        book_found = matching_books[0]
+      
+
+    if not book_found:
+        book_found = randchoice(secret_books) if secret_books else None
+
+    adv                = parse.adv(boolwise=True)
+    reroll_number      = ch.csettings.get("reroll", None)
+    minimum_check      = parse.last('mc', None, int) or (10 if ch.csettings.get("talent", False) and ch.skills[search_skill].prof else None)
+    bonus              = ("+"+parse.join('b', '+', '') if parse.get('b') else '')
+    guidance           = ("+ 1d4[guidance]" if parse.get('guidance') else '')
+    search_roll        = vroll(cs[search_skill].d20(adv, reroll_number, minimum_check)+bonus+guidance)
+
+    if search_roll.total >= int(book.DC):
+        out += f""" {filters} -title "{name} looks for a book in the library and finds:\n**{book.T}**" -f "Author|{book.A}" -f "Category|{book.G}|inline" -f "Genre|{book.S}|inline"  """
+        out += f""" -f "Languages|{book.L}|inline" -f "Description|{book.D}"  """
+        out += f""" -f "{"Animal Handling" if search_skill == "animalHandling" else "Sleight of Hand" if search_skill == "sleightOfHand" else search_skill.capitalize()} Check|{search_roll} - Success!"  """
+        out += f""" -footer "Books in this filter: {len(secret_books)} - By VeryGreatFrog#6253" """
+        return out
+    else: 
+        out += f""" {filters} -title "{name} was unable to find what they are looking for."   """
+        out += f""" -f "{"Animal Handling" if search_skill == "animalHandling" else "Sleight of Hand" if search_skill == "sleightOfHand" else search_skill.capitalize()} Check|{search_roll} - Failure!"  """
+        out += f""" -footer "Books in this filter: {len(secret_books)} - By VeryGreatFrog#6253" """
+        return out
 
 if book_search:
     matching_books = [book for book in finished_books if book_search == book.T.lower()] or [book for book in finished_books if book_search in book.T.lower()]
@@ -69,7 +136,7 @@ if book_search:
     if len(matching_books) > 1:
         for book in matching_books:
             matching_book_list.append(book.T)
-        return f"""{filters} -title "Matched multiple books. Please be more specific!" -f "Matches:" -f "{n.join(matching_book_list)[1000:]}" -footer "Books in this filter: {len(matching_book_list)} - By VeryGreatFrog#6253" -thumb https://media.discordapp.net/attachments/846062066225250365/887043638213869628/b134df5329cb20a97f303f36ddfbd771.png """
+        return f"""embed {filters} -title "Matched multiple books. Please be more specific!" -f "Matches:" -f "{n.join(matching_book_list)[1000:]}" -footer "Books in this filter: {len(matching_book_list)} - By VeryGreatFrog#6253" -thumb https://media.discordapp.net/attachments/846062066225250365/887043638213869628/b134df5329cb20a97f303f36ddfbd771.png """
 
     book_found = matching_books[0]
     out += f""" {filters} -title "{name} looks for a book in the library and finds:\n**{book_found.T}**" -f "Author|{book_found.A}" -f "Category|{book_found.G}|inline" -f "Genre|{book_found.S}|inline"  """
@@ -86,10 +153,25 @@ if overview:
         page_search = len(pages)
     out += f"""{filters} -title "{name} checks the book catalogs!" -f "Book overview|{n.join(pages[ min(len(pages),page_search-1)] )}" -footer "Showing page {page_search} out of {len(pages)}\nBooks in this filter: {len(finished_books)} - By VeryGreatFrog#6253" """
     return out
-    
-random        = finished_books[randint(len(finished_books))] if finished_books else None
 
-if not random: return f"""embed -title "{name} was unable to find any books with those filters." -color <color> -thumb -thumb https://media.discordapp.net/attachments/846062066225250365/887043638213869628/b134df5329cb20a97f303f36ddfbd771.png """ 
+if not finished_books: return f"""embed -title "{name} was unable to find any books with those filters." -color <color> -thumb -thumb https://media.discordapp.net/attachments/846062066225250365/887043638213869628/b134df5329cb20a97f303f36ddfbd771.png """ 
+
+
+
+if random_secrets:
+  passive = 10 + character().skills.investigation.value + (character().skills.investigation.adv or 0)*5 + (5 if "observant" in get("feats","").lower() else 0)
+  for i in range(999):
+    random = randchoice(finished_books)
+    if random.get("DC"):
+      if passive >= random.get("DC"):
+        break
+    else:
+      break
+  if i == 999:
+    err("Too many statements. Please try again. This is due to a low investigation and too many books with high DCs.")
+else:
+  random = randchoice(finished_books) if finished_books else None
+
 
 if not book_search:
     out += f""" {filters} -title "{name} looks for a book in the library and finds:\n**{random.T}**" -f "Author|{random.A}" -f "Category|{random.G}|inline" -f "Genre|{random.S}|inline"  """
